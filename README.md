@@ -16,9 +16,9 @@ IO are :
 
 
 Preinstalled software on the board are :
-* lua
-* lucid : web server, admin web application, in Lua
-* nixio : a little framwork for socket communication, process managemant, file/directory access
+* **Openwrt**, **busybox**, **ssh** (to be activated by wifi), **lua**
+* **lucid** : web server, admin web application, in Lua
+* **nixio** : a little framwork for socket communication, process managemant, file/directory access
 * noting else...
 * no realy docummentations on Lua part!
 
