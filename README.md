@@ -19,6 +19,8 @@ Preinstalled software on the board are :
 * **Openwrt**, **busybox**, **ssh** (to be activated by wifi), **lua**
 * **lucid** : web server, admin web application, in Lua
 * **nixio** : a little framwork for socket communication, process managemant, file/directory access
+   [doc](https://neopallium.github.io/nixio/modules/nixio.html)
+
 * noting else...
 * no realy docummentations on Lua part!
 
