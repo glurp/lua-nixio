@@ -4,7 +4,7 @@ LUA / nixio module experimentations
 Using lua on openwrt OLIMMEX RALINK dev board.
 * RT5350F-OLinuXino-EVB
 * 32 MB Ram, 32bits cpu ,( MIPS, openWrt linux )
-* 25 $ (!) ( 15 $ Soc CPU)
+* 15 $ (!) ( 10 $ Soc CPU)
 * https://www.olimex.com/Products/OLinuXino/RT5350F/RT5350F-OLinuXino-EVB/open-source-hardware
 
 IO are :
@@ -26,8 +26,7 @@ Preinstalled software on the board are :
 
 Here, there are working:
 * io.lua : read button, blink relay1. (with files acces on /sys/class )
-* socket_client.lua : connect to a host/pot, send data, close
-* socket_server.lua : wait connexion on 8080, echo , close client connection
+* iopoll.lua : TCP socket server, for read / write relay1/relay2 via lan/wan
 
 TODO
 ===
