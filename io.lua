@@ -68,18 +68,28 @@ end
 print('Button state='..get(0))
 
 k=1
-tempo=1000
-delta=-50
+tempo=700
+delta=-20
 
-while get(0)=='0' do
-  set(2,k)
-  sleep(tempo)
-  k=(k+1) % 2
-  tempo=tempo+delta
-  if tempo<100 or tempo>1000 then
-    delta=-delta
+while true do
+  tempo=500
+  delta=-20
+  while get(0)=='0' do sleep(100) end
+  while get(0)=='1' do sleep(100) end
+
+  while get(0)=='0' do
+    set(2,k)
+    sleep(tempo)
+    k=(k+1) % 2
+    tempo=tempo+delta
+    if tempo<70 or tempo>3000 then
+      delta=-delta
+    end
   end
+  set(2,1) ;  sleep(50) ; set(2,0) ; sleep(50) ; set(2,1);
+  while get(0)=='1' do sleep(100) end
 end
+
 set(2,1)
 print('Button state='..get(0))
 
