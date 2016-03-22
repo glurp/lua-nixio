@@ -1,7 +1,7 @@
 #!/usr/bin/lua
 --------------------------------------------------------------
 --
--- iopoll.lua  serveur TCP pour commandes Relay1/Relay2
+-- iopoll.lua  TCPi server  pour acces to  Relay1/Relay2
 --           Async server :  nixio.poll() is use for 
 --           manage multi-socket connexion/server 
 --
@@ -68,6 +68,8 @@ end
 -- ************************* Events ****************************
 -- a stupid event loop : event managed are only TCP/read/error 
 -- defined by 3 requests : register(socket), unregister(socket) , mainloop()
+-- inspiration: https://github.com/xopxe/lumen
+--               selector-nixio.lua
 
 gsockets={} -- table of sockets currently selectable
 
@@ -112,7 +114,7 @@ function unregister(socket)
   print("unregister(): socket not finded!")
 end
 
------------------------  pplication callbacks
+-----------------------  Application callbacks
 
 function timer()
  -- print("timeout...")
