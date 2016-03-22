@@ -1,11 +1,13 @@
 #!/usr/bin/lua
 --------------------------------------------------------------
 --
--- ioso.lua  serveur TCP pour commandes Relay1/Relay2 (par Andoid?")
---            Sync serveur : only one connexion at one time...
---            ( see iopoll.lua for event machine)
+-- iopoll.lua  serveur TCP pour commandes Relay1/Relay2
+--           Async server :  nixio.poll() is use for 
+--           manage multi-socket connexion/server 
 --
 --------------------------------------------------------------
+
+-- nixio doc : https://neopallium.github.io/nixio/modules/nixio.html
 
 local nixio = require("nixio")
 
@@ -52,7 +54,6 @@ function get(pin)
 	end
 end
 
--- nixio doc : https://neopallium.github.io/nixio/modules/nixio.html
 
 function sleep(ms)
  nixio.poll(nil,ms)
@@ -65,9 +66,10 @@ end
 
 
 -- ************************* Events ****************************
--- a stupid event loop : event are only read on TCP socket
+-- a stupid event loop : event managed are only TCP/read/error 
+-- defined by 3 requests : register(socket), unregister(socket) , mainloop()
 
-gsockets={}
+gsockets={} -- table of sockets currently selectable
 
 function mainloop(timeout) 
  while true do
@@ -110,7 +112,8 @@ function unregister(socket)
   print("unregister(): socket not finded!")
 end
 
------------------------  Socket read/write / event 
+-----------------------  pplication callbacks
+
 function timer()
  -- print("timeout...")
 end
